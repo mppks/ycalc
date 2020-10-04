@@ -2,6 +2,7 @@ import sys
 from PySide2.QtWidgets import QApplication, QMainWindow
 from ycalc_ui import Ui_MainWindow
 from abc import ABC, abstractmethod
+import yobit_api
 
 
 class YCalc(QMainWindow):
@@ -43,6 +44,8 @@ class YCalc(QMainWindow):
 
 class Operation(ABC):
 
+    OPERATION = None
+
     def __init__(self, ui):
         self.ui = ui
 
@@ -53,9 +56,10 @@ class Operation(ABC):
     def set_currency(self):
         pass
 
-    @abstractmethod
     def refresh_btn(self):
-        pass
+        pair = self.get_currency_box().lower() + "_usd"
+        response = yobit_api.PublicApi().get_pair_ticker(pair=pair)
+        self.ui.rateInput.setText('%.8f' % response[self.OPERATION])
 
     @abstractmethod
     def calculate_btn(self):
@@ -65,6 +69,8 @@ class Operation(ABC):
 class Buy(Operation):
     """ Направление покупки криптовалюты
     """
+    OPERATION = 'buy'
+
     def __init__(self, ui):
         super().__init__(ui)
         self.ui.giveInput.setText('%.8f' % 0)
@@ -86,9 +92,6 @@ class Buy(Operation):
     def set_currency(self):
         self.ui.receiveCurLabel.setText(self.get_currency_box())
 
-    def refresh_btn(self):
-        pass
-
     def calculate_btn(self):
         give = float(self.ui.giveInput.text())
         commission = float(self.ui.commissionInput.text())
@@ -107,6 +110,8 @@ class Buy(Operation):
 class Sale(Operation):
     """ Направление продажи криптовалюты
     """
+    OPERATION = 'sell'
+
     def __init__(self, ui):
         super().__init__(ui)
         self.ui.giveInput.setText('%.8f' % 0)
@@ -127,9 +132,6 @@ class Sale(Operation):
 
     def set_currency(self):
         self.ui.giveCurLabel.setText(self.get_currency_box())
-
-    def refresh_btn(self):
-        pass
 
     def calculate_btn(self):
         give = float(self.ui.giveInput.text())

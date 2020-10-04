@@ -1,2 +1,9 @@
+certifi==2020.6.20
+cfscrape==2.1.1
+chardet==3.0.4
+idna==2.10
 PySide2==5.15.1
+requests==2.24.0
 shiboken2==5.15.1
+urllib3==1.25.10
+yobit-api==0.1.4
