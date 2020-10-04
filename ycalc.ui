@@ -8,7 +8,7 @@
     <x>0</x>
     <y>0</y>
     <width>233</width>
-    <height>203</height>
+    <height>229</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -56,13 +56,6 @@
     </item>
     <item>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="giveLabel">
-        <property name="text">
-         <string>Отдаю:</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="1">
        <widget class="QLineEdit" name="giveInput">
         <property name="sizePolicy">
@@ -79,6 +72,22 @@
         </property>
        </widget>
       </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="commissionCurLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>%</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="2">
        <widget class="QLabel" name="giveCurLabel">
         <property name="text">
@@ -86,10 +95,101 @@
         </property>
        </widget>
       </item>
+      <item row="5" column="2">
+       <widget class="QLabel" name="receiveCurLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>btc</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="netLabel">
+        <property name="text">
+         <string>Отдаю - Ком.:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="commissionMoneyLabel">
+        <property name="text">
+         <string>Комиссия:</string>
+        </property>
+       </widget>
+      </item>
       <item row="1" column="0">
        <widget class="QLabel" name="commissionLabel">
         <property name="text">
          <string>Комиссия:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="rateInput">
+        <property name="text">
+         <string>0.00000000</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="netCurLabel">
+        <property name="text">
+         <string>usd</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="receiveInput">
+        <property name="styleSheet">
+         <string notr="true">QLineEdit{ background-color: rgb(226, 226, 226) }</string>
+        </property>
+        <property name="text">
+         <string>0.00000000</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="giveLabel">
+        <property name="text">
+         <string>Отдаю:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="rateLabel">
+        <property name="text">
+         <string>Курс:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="commissionMoneyCurLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>usd</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="receiveLabel">
+        <property name="text">
+         <string>Получаю:</string>
         </property>
        </widget>
       </item>
@@ -112,30 +212,39 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="commissionCurLabel">
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="commissionMoneyInput">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="text">
-         <string>%</string>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit{ background-color: rgb(226, 226, 226) }</string>
         </property>
-        <property name="scaledContents">
-         <bool>false</bool>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string>0.00000000</string>
+        </property>
+        <property name="cursorPosition">
+         <number>10</number>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="netLabel">
+      <item row="4" column="2">
+       <widget class="QLabel" name="rateCurLabel">
         <property name="text">
-         <string>Отдаю - Ком.:</string>
+         <string>usd</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="3" column="1">
        <widget class="QLineEdit" name="netInput">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -152,67 +261,6 @@
         </property>
         <property name="readOnly">
          <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QLabel" name="netCurLabel">
-        <property name="text">
-         <string>usd</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="rateLabel">
-        <property name="text">
-         <string>Курс:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="rateInput">
-        <property name="text">
-         <string>0.00000000</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QLabel" name="rateCurLabel">
-        <property name="text">
-         <string>usd</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="receiveLabel">
-        <property name="text">
-         <string>Получаю:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="receiveInput">
-        <property name="styleSheet">
-         <string notr="true">QLineEdit{ background-color: rgb(226, 226, 226) }</string>
-        </property>
-        <property name="text">
-         <string>0.00000000</string>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="2">
-       <widget class="QLabel" name="receiveCurLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>btc</string>
         </property>
        </widget>
       </item>

@@ -71,7 +71,8 @@ class Buy(Operation):
         self.ui.giveCurLabel.setText('USD')
         self.ui.commissionInput.setText('0.2')
         self.ui.commissionCurLabel.setText('%')
-        # TODO: добавить комиссию в баксах
+        self.ui.commissionMoneyInput.setText('%.8f' % 0)
+        self.ui.commissionMoneyCurLabel.setText('USD')
         self.ui.netLabel.setText('Отдаю - Ком.:')
         self.ui.netInput.setText('%.8f' % 0)
         self.ui.netCurLabel.setText('USD')
@@ -91,7 +92,9 @@ class Buy(Operation):
     def calculate_btn(self):
         give = float(self.ui.giveInput.text())
         commission = float(self.ui.commissionInput.text())
-        net = give - give/100.2 * commission
+        commission_money = give/100.2 * commission
+        self.ui.commissionMoneyInput.setText('%.8f' % commission_money)
+        net = give - commission_money
         self.ui.netInput.setText(str('%.8f' % net))
         rate = float(self.ui.rateInput.text())
         if not rate:
@@ -110,6 +113,8 @@ class Sale(Operation):
         self.ui.giveCurLabel.setText(self.get_currency_box())
         self.ui.commissionInput.setText('0.2')
         self.ui.commissionCurLabel.setText('%')
+        self.ui.commissionMoneyInput.setText('%.8f' % 0)
+        self.ui.commissionMoneyCurLabel.setText('USD')
         self.ui.netLabel.setText('Получаю + Ком.:')
         self.ui.netInput.setText('%.8f' % 0)
         self.ui.netCurLabel.setText('USD')
@@ -132,7 +137,9 @@ class Sale(Operation):
         rate = float(self.ui.rateInput.text())
         gross = give * rate
         self.ui.netInput.setText(str('%.8f' % gross))
-        receive = gross - gross/100 * commission
+        commission_money = gross/100 * commission
+        self.ui.commissionMoneyInput.setText('%.8f' % commission_money)
+        receive = gross - commission_money
         self.ui.receiveInput.setText(str('%.8f' % receive))
 
 
