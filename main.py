@@ -44,7 +44,7 @@ class YCalc(QMainWindow):
 
 class Operation(ABC):
 
-    OPERATION = None
+    KEY = None
 
     def __init__(self, ui):
         self.ui = ui
@@ -59,7 +59,7 @@ class Operation(ABC):
     def refresh_btn(self):
         pair = self.get_currency_box().lower() + "_usd"
         response = yobit_api.PublicApi().get_pair_ticker(pair=pair)
-        self.ui.rateInput.setText('%.8f' % response[self.OPERATION])
+        self.ui.rateInput.setText('%.8f' % response[self.KEY])
 
     @abstractmethod
     def calculate_btn(self):
@@ -67,9 +67,9 @@ class Operation(ABC):
 
 
 class Buy(Operation):
-    """ Направление покупки криптовалюты
+    """ Направление - покупка криптовалюты
     """
-    OPERATION = 'buy'
+    KEY = 'sell'
 
     def __init__(self, ui):
         super().__init__(ui)
@@ -108,9 +108,9 @@ class Buy(Operation):
 
 
 class Sale(Operation):
-    """ Направление продажи криптовалюты
+    """ Направление - продажа криптовалюты
     """
-    OPERATION = 'sell'
+    KEY = 'buy'
 
     def __init__(self, ui):
         super().__init__(ui)
