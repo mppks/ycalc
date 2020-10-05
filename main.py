@@ -34,6 +34,7 @@ class YCalc(QMainWindow):
 
     def change_currency(self):
         self.operation.set_currency()
+        self.refresh_rate()
 
     def calculate(self):
         self.operation.calculate_btn()
@@ -59,7 +60,9 @@ class Operation(ABC):
     def refresh_btn(self):
         pair = self.get_currency_box().lower() + "_usd"
         response = yobit_api.PublicApi().get_pair_ticker(pair=pair)
-        self.ui.rateInput.setText('%.8f' % response[self.KEY])
+        # TODO: Обработка исключения при отсутствии соединения
+        rate = response[self.KEY] if response else 0
+        self.ui.rateInput.setText('%.8f' % rate)
 
     @abstractmethod
     def calculate_btn(self):
@@ -82,12 +85,16 @@ class Buy(Operation):
         self.ui.netLabel.setText('Отдаю - Ком.:')
         self.ui.netInput.setText('%.8f' % 0)
         self.ui.netCurLabel.setText('USD')
-        self.ui.rateInput.setText('%.8f' % 0)
+
+        self.refresh_btn()
+        # self.ui.rateInput.setText('%.8f' % 0)
+
         self.ui.rateCurLabel.setText('USD')
         self.ui.receiveInput.setText('%.8f' % 0)
         self.ui.receiveCurLabel.setText(self.get_currency_box())
-        self.ui.netInput.setReadOnly(True)
-        self.ui.receiveInput.setReadOnly(True)
+
+        # self.ui.netInput.setReadOnly(True)
+        # self.ui.receiveInput.setReadOnly(True)
 
     def set_currency(self):
         self.ui.receiveCurLabel.setText(self.get_currency_box())
@@ -123,12 +130,16 @@ class Sale(Operation):
         self.ui.netLabel.setText('Получаю + Ком.:')
         self.ui.netInput.setText('%.8f' % 0)
         self.ui.netCurLabel.setText('USD')
-        self.ui.rateInput.setText('%.8f' % 0)
+
+        self.refresh_btn()
+        # self.ui.rateInput.setText('%.8f' % 0)
+
         self.ui.rateCurLabel.setText('USD')
         self.ui.receiveInput.setText('%.8f' % 0)
         self.ui.receiveCurLabel.setText('USD')
-        self.ui.netInput.setReadOnly(True)
-        self.ui.receiveInput.setReadOnly(True)
+
+        # self.ui.netInput.setReadOnly(True)
+        # self.ui.receiveInput.setReadOnly(True)
 
     def set_currency(self):
         self.ui.giveCurLabel.setText(self.get_currency_box())
@@ -137,11 +148,13 @@ class Sale(Operation):
         give = float(self.ui.giveInput.text())
         commission = float(self.ui.commissionInput.text())
         rate = float(self.ui.rateInput.text())
+
         gross = give * rate
-        self.ui.netInput.setText(str('%.8f' % gross))
         commission_money = gross/100 * commission
-        self.ui.commissionMoneyInput.setText('%.8f' % commission_money)
         receive = gross - commission_money
+
+        self.ui.netInput.setText(str('%.8f' % gross))
+        self.ui.commissionMoneyInput.setText('%.8f' % commission_money)
         self.ui.receiveInput.setText(str('%.8f' % receive))
 
 
