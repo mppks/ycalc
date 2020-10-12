@@ -25,32 +25,10 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_7">
       <item>
-       <widget class="QComboBox" name="directionBox">
-        <item>
-         <property name="text">
-          <string>Купить</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Продать</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QComboBox" name="directionBox"/>
       </item>
       <item>
-       <widget class="QComboBox" name="currencyBox">
-        <item>
-         <property name="text">
-          <string>BTC</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>ETH</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QComboBox" name="currencyBox"/>
       </item>
      </layout>
     </item>
@@ -272,13 +250,6 @@
        <widget class="QPushButton" name="refreshButton">
         <property name="text">
          <string>Обновить текущий курс</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="calculateButton">
-        <property name="text">
-         <string>Рассчитать</string>
         </property>
        </widget>
       </item>

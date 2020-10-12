@@ -30,15 +30,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.directionBox = QComboBox(self.centralwidget)
-        self.directionBox.addItem("")
-        self.directionBox.addItem("")
         self.directionBox.setObjectName(u"directionBox")
 
         self.horizontalLayout_7.addWidget(self.directionBox)
 
         self.currencyBox = QComboBox(self.centralwidget)
-        self.currencyBox.addItem("")
-        self.currencyBox.addItem("")
         self.currencyBox.setObjectName(u"currencyBox")
 
         self.horizontalLayout_7.addWidget(self.currencyBox)
@@ -179,11 +175,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.refreshButton)
 
-        self.calculateButton = QPushButton(self.centralwidget)
-        self.calculateButton.setObjectName(u"calculateButton")
-
-        self.horizontalLayout.addWidget(self.calculateButton)
-
 
         self.verticalLayout.addLayout(self.horizontalLayout)
 
@@ -196,12 +187,6 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u041a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440", None))
-        self.directionBox.setItemText(0, QCoreApplication.translate("MainWindow", u"\u041a\u0443\u043f\u0438\u0442\u044c", None))
-        self.directionBox.setItemText(1, QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e\u0434\u0430\u0442\u044c", None))
-
-        self.currencyBox.setItemText(0, QCoreApplication.translate("MainWindow", u"BTC", None))
-        self.currencyBox.setItemText(1, QCoreApplication.translate("MainWindow", u"ETH", None))
-
         self.giveInput.setInputMask("")
         self.giveInput.setText(QCoreApplication.translate("MainWindow", u"0.00000000", None))
         self.commissionCurLabel.setText(QCoreApplication.translate("MainWindow", u"%", None))
@@ -224,6 +209,5 @@ class Ui_MainWindow(object):
         self.rateCurLabel.setText(QCoreApplication.translate("MainWindow", u"usd", None))
         self.netInput.setText(QCoreApplication.translate("MainWindow", u"0.00000000", None))
         self.refreshButton.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u0442\u0435\u043a\u0443\u0449\u0438\u0439 \u043a\u0443\u0440\u0441", None))
-        self.calculateButton.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c", None))
     # retranslateUi
 
